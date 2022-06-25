@@ -1,3 +1,4 @@
+from matplotlib.pyplot import axis
 from numpy import NaN
 import pandas as pd
 import plotly.express as px
@@ -78,6 +79,13 @@ for country in countries:
         dataset.loc[dataset['Country'] == country, 'Continent'] = 'Oceania'
 
 
+# better (didn't implement it like this due to lack of time)
+# dataset['Continent'].apply(lambda x: 'Asia' if country in Asia else (
+#                                     'Africa' if country in Africa else (
+#                                     'Europe' if country in Europe else
+#                                     'Americas' if country in Americas else 
+#                                     'Oceania'
+#                                     )), axis=1)
 
 # our bubble cannot handle negative values => negative water stress is essentially no water stress (zero) after all
 dataset.loc[dataset['Water stress']<0,'Water stress'] = 0
